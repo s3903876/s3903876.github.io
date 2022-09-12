@@ -1,0 +1,295 @@
+/* 
+when approaching the styleing I like to make it as readible as possible for myself.
+I like to be able to make it so I can fully digest information.
+I have ADHD and dyslexia so I usually find it very hard to take in text and information unless it is 
+laid out and stylized in a particular way. 
+*/ 
+
+*{
+  box-sizing: border-box;
+  background-origin: border-box;
+}
+
+:root{
+  --col-01:#171219;
+  --col-02:#ebf7fb;
+  --col-03:#c03838;
+  --col-04:#b6e878;
+
+  
+
+  /*GRADIENT COLOURS*/
+  --gradCol-01:#d6d6d6;
+  --gradCol-02:#f8f8f8;
+
+  --gradCol-03:#5b5b5b;
+  --gradCol-04:#838383; 
+
+/* I wanted to stick with variations of greys reds and blues throughout the website */
+
+
+
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+/* links */
+
+a {
+  text-decoration: none;
+  color: #a3a3a3;
+}
+
+ul {
+    list-style-type: square;
+    /* the square variety made more sens, rather than numbering.
+    I get confused when there are numbers, I'd rather have visual indicators of lists rather than numerical.
+    Numbers can be overwhelming. */
+    color: var(--col-01);
+}
+
+a:hover {
+  background-color: rgb(255, 182, 182);
+}
+
+a:active {
+  background-color: rgb(97, 40, 40);
+} 
+/* the active colour being darker than the hover makes it feel like i've pressed it,
+it gives the the user feedback for their action of clicking */
+
+body{
+  padding: 1rem;
+  background-color: var(--col-02);
+  color: var(--col-01);
+  transition: color ease-in 2s; /* if anything in CSS changes, it takes 2 sec to change the value */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* 
+  I changed the font family as the default is hard for me to read as someone with dyslexia
+  I also capitalised headings, this helps me navigate the website and breaks things into clearer sections;
+  almost as if they were instructions.
+  */
+
+  width:71vh;
+
+  margin: auto;
+  /* 
+    I kept the margin as auto, this helps me read the text.
+    I always find it hard to read if the text strectches arcross the wole page.
+
+   *HOWEVER* 
+
+   When adjusting it to different phone and tablet sizes I couldn't figure out
+   how to format it so it adjusts to those specific sizes of screens,
+   something that I wish to investigate in the future.
+   */
+  
+}
+
+hr{
+  margin-bottom: 20px;
+
+}
+
+
+
+
+#menu{
+  background-image: linear-gradient(to right, var(--gradCol-01), var(--gradCol-02));
+  /* I gave the menu a linear gradient that goes from left to right.
+  This is indiacted by the different colours, the colour most different to the background
+  is to the left, and more similar is to the right. 
+  I like to this of a splodge of paint of on the surface of something; e.g.
+  If you had a splodge of paint on the left of a surface, and smudged it to the right,
+  the paint will become more like the surface the further it's smudged.
+
+  This is also indicative of the blue border on the left.
+  This also draws the users eyes to the left.
+
+  As the viewers eyes go right they then see the mode button.
+  
+  */
+
+
+  border: 2px;
+  border-style: none none none double;
+  border-color: #5252ff;
+
+
+  margin-left: 50px;
+ 
+  margin-bottom: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+
+
+
+
+#modeButton{
+  float: right;
+  margin-right: 50px;
+  background-color: #5252ff;
+  color: rgb(255, 59, 59);
+  border-color: var(--gradCol-01)
+};
+
+
+
+
+
+
+
+section{
+  margin-bottom: 2rem;
+}
+
+#overview{
+  margin-bottom: 100px;
+  
+}
+
+#p1{
+  color: #6d6d6d;
+  /* I wanted the p1/ overview to be a different colour,
+  this helps distinguish it from the rest of the information that follows. 
+  It's a nice grey in-between the light and dark that suits both colour schemes.*/
+
+  margin-top: 1rem;
+}
+
+
+
+
+h1{
+  font-size: 3rem;
+  /* transition: 4s;
+  animation: colourCycle 3s ease-in infinite; */
+  
+  /* This animation felt very unnessesary, maybe it's my ADHD 
+  but I couldn't focus on anything else when there was a constant animation.
+  On top of that, that kind of animation is not necessary for an inforamtion websit */
+
+
+
+}
+
+h1 :hover{
+  color:var(--col-04);
+  transition: 0s;
+}
+
+/* animation :
+
+@keyframes colourCycle {
+  0%{color: red;}
+  50%{color: green;}
+  100%{color: blue;}
+}
+
+*/
+
+h2{
+  font-size: 2rem;
+}
+
+
+
+
+
+p{
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+p.colors a {
+  color: red;
+  font-weight: bold;
+}
+
+
+
+
+
+figcaption{
+  width: fit-content;
+  padding-top: 0.5rem;
+  font-size: 0.8em;
+
+  /* giving padding and smaller font size made it more readible */
+}
+
+dl ul{
+  margin-bottom: 0;
+}
+
+li{
+  font-size: 0.7rem;
+}
+
+dd{
+  padding-left: 60px;
+}
+
+li ul{
+  padding-left: 40px;
+}
+
+.img-wrapper{
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-image: radial-gradient(circle, var(--gradCol-01) 70%, var(--gradCol-02));
+  border-style: groove;
+  /* used the same gradient colours as the menu, helps keeps consistancy,
+  gave it a border to help differenciate image and text; this makes the image and surrounding text 
+  easier to digest and understand. */
+  
+}
+
+
+.img-figure{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-img{
+  width: 80%;
+}
+
+.res-columns{
+  column-width: 25rem;
+}
+
+/* medium devices 600 - 992 */
+@media only screen and (min-width: 600px) {
+  :root{
+    font-size: 20px;
+  }
+  
+  .img-wrapper{
+    width: 75%;
+    margin: 1.5rem auto;
+  }
+}
+
+/* medium devices 992 + */
+@media only screen and (min-width: 992px) {
+  :root{
+    font-size: 24px;
+  }
+
+  .img-wrapper{
+    max-width: fit-content;
+    float: right;
+    margin: 1.5rem;
+  }
+}
+
+@media all and (prefers-reduced-motion){
+
+}
