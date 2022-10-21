@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+    <head>
+
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style.css">
+
+        <!-- <script src="script.js"></script> -->
+
+        <title> Magnifying Glass Website</title>
+
+    </head>
+
+    <body>
+        <div id="header"> <p> <b>MAGNIFYING GLASS</b></p></div>
+        
+        
+        <div id="imageWrapper">
+
+                <div id="image" style="--b:0px;"> </div>
+                <div id="glass" style="--x:300px; --y:300px; --m:1;"></div>
+                <div id="eventLayer"></div>
+                
+                        <!-- 
+                            b:0px determines starting blur amount
+                            x:300px & y300:px determine starting position of glass. 
+                            m:1 determines staring magnification.
+            
+                        -->
+
+
+
+
+                <div id="text"> 
+                    <p> <div id = "left">   <b>ZOOM IN (+)</b>  </div>   <div id = "right">     <b>ZOOM OUT (-)</b>     </div> </p>
+                    <p> <div id = "left">   [<i> Scroll In </i>]  </div>   <div id = "right">     [<i> Scroll Out </i>]     </div> </p>
+                </div>
+
+                        <!-- created left & right divs so I can easily postion the text left/right */ -->
+
+
+
+
+        </div>
+
+       
+                    <!-- Put the script here as it wasn't properly linking in a seperate Javascript folder.  -->
+
+        <script type="text/javascript">
+            const image = document.querySelector("#image");
+            const range = document.querySelector("#range input");
+            const glass = document.querySelector("#glass");
+            const eventLayer = document.querySelector("#eventLayer");
+
+            let imgRect = image.getBoundingClientRect()
+
+            let imgLeft = imgRect.left;
+            let imgTop = imgRect.top;
+            let cond = false;
+        
+
+            window.addEventListener("resize", () => {
+                imgRect = image.getBoundingClientRect()
+
+                imgLeft = imgRect.left;
+                imgTop = imgRect.top;
+                
+                });
+
+
+            window.addEventListener ("wheel", (e) => {
+                e.preventDefault ();
+                        
+
+                let magValue = parseFloat(glass.style.getPropertyValue("--m"))
+                let blurValue = parseFloat(image.style.getPropertyValue("--b"))
+                        /* Changes magValue and BlurValue based on the "wheel" event */
+
+                if (e.deltaY < 0 && magValue <4.9) {
+                    glass.style.setProperty("--m", magValue + 0.1)
+                    image.style.setProperty("--b", blurValue + 0.3 + "px")
+                }
+                        /* 
+                        when deltaY (scroll up) occurs the background size increases by 0.1 each "scroll up" occurance.
+                        adding "&& magValue <4.9" caps this increase in size at x4.9. 
+
+                        Additionally, when the blur value increases by 0.3px each scroll and is capped at 4.9.
+
+                        */
+
+
+
+
+                else if (e.deltaY> 0 && magValue > 0.9){
+                    glass.style.setProperty("--m", magValue - 0.1)
+                    image.style.setProperty("--b", blurValue - 0.3 + "px")
+                }
+                    /* 
+                        when deltaY (scroll down) occurs the background size decreases by 0.1 each "scroll down" occurance.
+                        adding "&& magValue > 0.9" allows not to zoom out passed the image size as it is unneccessary.
+
+                        Additionally, blurCalue decreases by 0.3px each "scroll down" occurance.
+
+                    */
+            });
+
+            eventLayer.addEventListener("mousemove", () => {
+                if (cond) cond = false;
+                else cond = true;
+            });
+
+            eventLayer.addEventListener("mousemove", (ev) => {
+               
+                if (cond) {
+                    glass.style.setProperty("--x", `${ev.x - imgLeft}px`);
+                    glass.style.setProperty("--y", `${ev.y - imgTop}px`);
+                }
+            });
+            
+                    /* Out of everything the event layer confuses me the most.
+                    However from what I can tell, the event layer allows whenever and whereever the mouse moves, 
+                    it changes the glassproperty and takes those coordinates and apply them to the background-postion in the CSS.
+                    */
+
+        </script>    
+
+    </body>
+
+</html>

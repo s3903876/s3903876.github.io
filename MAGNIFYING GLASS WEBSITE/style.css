@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;   
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: #dedede;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+:root{
+    --img: url(./img/ant.jpg);
+    --imgWidth: 720px;
+    --imgHeight: 405px;
+    --glassRadius: 60px;   
+}
+
+#image{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(./img/antBg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(var(--b));
+   
+                /* 
+                a blur filter is applied to this with the variable of (--b), 
+                the value is determined in the Javascript and set by the "wheel" action.
+                */
+                
+}
+
+#imageWrapper{
+    position: relative;
+    width: var(--imgWidth);
+    height: var(--imgHeight);
+    cursor: crosshair;
+
+                /*      
+                Everything inside #imageWrapper (image, glass, eventLayer, text) will abide by these rules.
+                I changed the cursor to 'crosshair' so when the cursor enters imageWrapper it changes'.
+                */
+}
+
+#glass{
+    width: calc(var(--glassRadius) * 2);
+    height: calc(var(--glassRadius) * 2);
+    border: 5px solid rgb(255, 15, 15);
+    border-radius: 50%;
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    background-image: url(./img/ant.jpg);
+    background-repeat: no-repeat;
+    background-size: calc(var(--imgWidth) * var(--m)) calc(var(--imgHeight) * var(--m));
+    background-position: calc(var(--glassRadius) - var(--x) * var(--m)) calc(var(--glassRadius) - var(--y) * var(--m)); 
+    filter: brightness(130%);
+
+                /* 
+                Background-Size creates the illusion of the magnifying glass.
+                Left & Top position allows the cursor to follow mouse movement.
+                Background-Position allows the image to stay consitant with where the mouse is relevant to the background image.
+                Brightness filter & Border color help draw the users eye to the Magnifying Glass.
+                */
+
+    
+}
+
+#eventLayer{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#header{
+    position: relative;
+    width: var(--imgWidth);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.3rem;
+    text-align: center;
+    background-color: rgb(248, 248, 248);
+    
+                /* having the width as --imgWidth allows it to be the same as image (720px) */
+}
+
+#text{
+    background-color: rgb(248, 248, 248);
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#left{
+    text-align: left;
+    position: absolute;
+}
+
+#right{
+    text-align: right;
+    position: relative;
+}
+                /* created left & right divs so I can easily postion the text left/right */
